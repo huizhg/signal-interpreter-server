@@ -10,4 +10,5 @@ def test_interpret_signal(mock_get_signal_title):
     with signal_interpreter as client:
         my_payload = {"signal": "16"}
         response = client.post("/", json=my_payload)
+        mock_get_signal_title.assert_called_with("16")
         assert response.get_json() == "Transfer Data"
