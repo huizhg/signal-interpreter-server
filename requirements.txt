@@ -1,17 +1,6 @@
-[[source]]
-name= "pypi"
-url="https://pypi.org/simple"
-verify_ssl =true
-
-[dev-packages]
-pytest= "*"   # use latest version of pytest
-mock=">=4.0.0"  # use v4.0.0 or later
-pycodestyle~=2.7.0
-
-[packages]
-flask= "==1.1.2"  # use v1.1.2 only
-
-[requires]
-python_version ="3"
-flask~=1.1.2
-invoke~=1.5.0
+python = 3.6.13
+flask==1.1.2
+pytest==6.2.3
+invoke==1.5.0
+pycodestyle = 2.7.0
+pylint = 2.8.3
