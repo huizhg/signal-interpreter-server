@@ -2,6 +2,9 @@
 import argparse
 from src.routes import signal_interpreter_app
 from src.routes import json_parser
+import logging
+
+logger = logging.getLogger(__name__)
 
 
 def parse_arguments():
@@ -16,6 +19,7 @@ def main():
     args = parse_arguments()
     file_path = args.file_path
     json_parser.load_file(file_path)
+    logger.info("Load json database from:  %s",file_path)
     signal_interpreter_app.run()
 
 

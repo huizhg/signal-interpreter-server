@@ -6,6 +6,7 @@ CURR_DIR = os.path.abspath(os.path.dirname(__file__))
 SRC_DIR = os.path.join(CURR_DIR, "src")
 UNIT_TEST_DIR = os.path.join(CURR_DIR, "test", "unit")
 COV_PATH = os.path.join(CURR_DIR, ".coveragerc")
+INTEGRATION_TEST_DIR = os.path.join(CURR_DIR, "test", "integration")
 
 
 @task
@@ -23,3 +24,6 @@ def unit_test(_):
     call(f"pytest --cov={SRC_DIR} {UNIT_TEST_DIR} --cov-config={COV_PATH}", shell=True)
 
 
+@task
+def integration_test(_):
+    call(f"pytest {INTEGRATION_TEST_DIR}", shell=True)
