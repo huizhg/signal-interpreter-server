@@ -1,0 +1,16 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+pytest = "==6.2.3"
+invoke = "==1.5.0"
+pycodestyle = "==2.7.0"
+pylint = "==2.8.3"
+Flask = "==2.0.0"
+
+[dev-packages]
+
+[requires]
+python_version = "3"
