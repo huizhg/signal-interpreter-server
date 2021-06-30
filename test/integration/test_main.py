@@ -5,8 +5,8 @@ from src.routes import signal_interpreter_app
 import sys
 import os
 
-current_dir = os.path.abspath(os.path.dirname(__file__))
-json_file_path = os.path.join(current_dir, "fixtures", "test_basic.json")
+CURRENT_DIR = os.path.abspath(os.path.dirname(__file__))
+JSON_FILE_PATH = os.path.join(CURRENT_DIR, "fixtures", "test_basic.json")
 
 
 @pytest.mark.parametrize("payload, expected_status_code, expected_response", [
@@ -15,7 +15,7 @@ json_file_path = os.path.join(current_dir, "fixtures", "test_basic.json")
     ({"DUMMY": "27"}, 400, None)
 ])
 @patch.object(signal_interpreter_app, "run")
-@patch.object(sys, "argv", ["signal-interpreter-server", "--file_path", json_file_path])
+@patch.object(sys, "argv", ["signal-interpreter-server", "--file_path", JSON_FILE_PATH])
 def test_application_with_signal(mock_run, payload, expected_status_code, expected_response):
     main()
     mock_run()
