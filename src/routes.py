@@ -14,17 +14,14 @@ signal_interpreter_app = Flask(__name__)
 def interpret_signal():
     """interpret the signal"""
     data = request.get_json()
-<<<<<<< HEAD
-    json_parser.data = data
     try:
         signal_title = json_parser.get_signal_title(data["signal"])
+        logger.info("signal title: %s", signal_title)
+        return jsonify(signal_title)
+    except KeyError as err:
+        logger.exception("Received error %s",err)
+        abort(400, description=f"Payload {data} is not correct, expects the key to be 'signal'.")
     except SignalNotFoundError as err:
         logger.exception("Signal not found exception occured %s", err)
-        abort(404, description="Signal not found")
-=======
-    # we do not want to overload the existing data in the json_parser
-    # when we call get_signal_title from postman, we compare it with our existing "database"
-    # json_parser.data = data 
-    signal_title = json_parser.get_signal_title(data["signal"])
->>>>>>> 0da701fb5549b90088f5c061ba5b3cd2aa35056f
-    return jsonify(signal_title)
+        abort(404, description=f"Signal {data['signal']} not found")
+
