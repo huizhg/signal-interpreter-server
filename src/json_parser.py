@@ -1,5 +1,5 @@
 """ A Json Parser module"""
-from self_defined_exception import SignalNotFoundError
+from src.self_defined_exception import SignalNotFoundError
 import logging
 import json
 
