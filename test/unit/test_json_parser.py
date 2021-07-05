@@ -1,6 +1,9 @@
-import pytest
+# pylint: disable=missing-function-docstring
+# pylint: disable=missing-module-docstring
 from unittest.mock import patch, mock_open
+import pytest
 from src.json_parser import JsonParser
+from src.self_defined_exception import SignalNotFoundError
 
 
 @pytest.mark.parametrize("item, expected_result", [
@@ -8,7 +11,6 @@ from src.json_parser import JsonParser
     ("3E", "Tester Present"),
     ("27", "Security Access"),
     ("34", "Request Download"),
-    ("23", None)
 
 ])
 def test_get_signal_title(item, expected_result):
@@ -17,6 +19,11 @@ def test_get_signal_title(item, expected_result):
                                      {"title": "Security Access", "id": "27"},
                                      {"title": "Request Download", "id": "34"}]}
     assert json_parser.get_signal_title(item) == expected_result
+
+
+def test_get_signal_title_with_invalid_identifier(json_parser_instance):
+    with pytest.raises(SignalNotFoundError):
+        json_parser_instance.get_signal_title("99")
 
 
 VALID_JSON_DATA_1 = '{"json" : "This is a JSON"}'
@@ -37,4 +44,3 @@ def test_load_file(item, expected_result):
         json_parser = JsonParser()
         json_parser.load_file("path/to/json/file")
         assert json_parser.data == expected_result
-

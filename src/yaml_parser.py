@@ -1,12 +1,12 @@
 """ A Json Parser module"""
 from src.self_defined_exception import SignalNotFoundError
 import logging
-import json
+import yaml
 
 logger = logging.getLogger(__name__)
 
 
-class JsonParser:
+class YamlParser:
     """A Json Parser class, used to load and parse json file"""
     def __init__(self):
         # class constructor
@@ -14,9 +14,10 @@ class JsonParser:
 
     def load_file(self, file_path):
         """load json file"""
-        with open(file_path) as file:
-            logger.info("load json file from: %s", file_path)
-            self.data = json.load(file)
+        with open(file_path, "r") as file:
+            logger.info("load yaml file from: %s", file_path)
+            dataMap = yaml.safe_load(file.read())
+            self.data = dataMap
 
     def get_signal_title(self, identifier):
         """given identifier, search the signal title"""
