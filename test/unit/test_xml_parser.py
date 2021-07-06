@@ -1,5 +1,6 @@
 # pylint: disable=missing-function-docstring
 # pylint: disable=missing-module-docstring
+# pylint: disable=line-too-long
 from unittest.mock import patch, mock_open
 from collections import OrderedDict
 import pytest

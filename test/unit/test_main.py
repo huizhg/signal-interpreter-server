@@ -1,5 +1,6 @@
 # pylint: disable=missing-function-docstring
 # pylint: disable=missing-module-docstring
+# pylint: distable=missing-class-docstring
 from argparse import ArgumentParser
 from unittest.mock import patch
 from src.main import parse_arguments, main, init, select_parser

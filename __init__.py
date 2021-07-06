@@ -1,6 +1,8 @@
+"""init file to config logger"""
+import os
 import logging.config
 import yaml
-import os
+
 
 CURRENT_DIR = os.path.abspath(__file__)
 SOURCE_DIR = os.path.join(CURRENT_DIR, "..")
